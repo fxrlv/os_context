@@ -19,7 +19,7 @@ main(void)
 
     try
     {
-        ctx.wait();
+        ctx.run();
     }
     catch (std::exception &e)
     {

@@ -1,52 +1,24 @@
 #ifndef OS_CONTEXT_POSIX_CONTEXT_HPP
 #define OS_CONTEXT_POSIX_CONTEXT_HPP
 
-#include "basic_context.hpp"
-
-#include <boost/asio/signal_set.hpp>
+#include "basic_posix_context.hpp"
 
 
-struct posix_context : basic_context
+struct posix_context : basic_posix_context
 {
-    posix_context() :
-        watcher(get_executor(), SIGINT, SIGTERM)
+    posix_context()
     {
         instance = this;
     }
 
-    void
-    wait(void)
+    ~posix_context()
     {
-        register_signal_handler();
-
-        run();
+        instance = nullptr;
     }
 
-  protected:
-    boost::asio::signal_set watcher;
-
     void
-    register_signal_handler(void)
+    run(void)
     {
-        watcher.async_wait([this](const auto &ec, int signum) {
-            if (ec)
-            {
-                return;
-            }
-
-            switch (signum)
-            {
-            case SIGINT:
-                action_required(on_stop);
-                action_required(on_stop);
-                return;
-            case SIGTERM:
-                action_required(on_shutdown);
-                return;
-            }
-
-            register_signal_handler();
-        });
     }
 
   private:

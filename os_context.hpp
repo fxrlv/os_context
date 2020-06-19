@@ -10,10 +10,9 @@
 #endif
 
 #if defined(BOOST_POSIX_API)
-#include "posix_context.hpp"
 using os_context = posix_context;
 #elif defined(BOOST_WINDOWS_API)
 using os_context = windows_context;
 #endif
 
-#endif // OS_CONTEXT_HPP
+#endif // OS_CONTEXT_OS_CONTEXT_HPP
