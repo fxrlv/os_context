@@ -1,5 +1,3 @@
-# OS Context
-
 Inspired by Boost.Application
 
 # Example
