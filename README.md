@@ -36,14 +36,14 @@ New-Service -Name <name> -BinaryPathName <executable>
 Start-Service -Name <name>
 ```
 
-Stop service:
+Invoke `on_stop`:
 
 ```powershell
-Stop-Service -Name <name> # on_stop invoked
+Stop-Service -Name <name>
 ```
 
-Shutdown service:
+Invoke `on_shutdown`:
 
 ```powershell
-Stop-Computer # on_shutdown invoked
+Stop-Computer
 ```
