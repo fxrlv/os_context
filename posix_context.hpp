@@ -11,14 +11,11 @@ struct posix_context : basic_posix_context
         instance = this;
     }
 
-    ~posix_context()
-    {
-        instance = nullptr;
-    }
-
     void
     run(void)
     {
+        register_handler();
+        execute();
     }
 
   private:
