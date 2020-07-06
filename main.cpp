@@ -2,7 +2,7 @@
 
 struct context : os_context
 {
-    context(int argc, char *argv[]):
+    context(int argc, char *argv[]) :
         os_context(argc, argv)
     {}
 };
