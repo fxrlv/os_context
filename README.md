@@ -5,27 +5,32 @@ Inspired by Boost.Application
 ```cpp
 #include "os_context.hpp"
 
-int
-main(void)
+struct context : os_context
 {
-    os_context ctx;
-
-    ctx.on_stop = [] {
+    void
+    stop(void)
+    {
         /**
          * SIGINT               on POSIX
          * SERVICE_CONTROL_STOP on Windows
          */
-    };
+    }
 
-    ctx.on_shutdown = [] {
+    void
+    shutdown(void)
+    {
         /**
          * SIGTERM                  on POSIX
          * SERVICE_CONTROL_SHUTDOWN on Windows
          */
-    };
+    }
+};
 
-    ctx.run();
-    return 0;
+int
+main(int argc, char *argv[])
+{
+    context ctx(argc, argv);
+    return ctx.exec();
 }
 ```
 
