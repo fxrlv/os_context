@@ -24,4 +24,4 @@ find_package(Boost REQUIRED COMPONENTS
 include_directories(${Boost_INCLUDE_DIRS})
 
 
-add_executable(agent main.cpp os_context.cpp)
+add_executable(agent main.cpp)
